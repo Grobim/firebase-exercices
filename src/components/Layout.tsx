@@ -6,7 +6,9 @@ import { useMenuCloseOnLocationChange } from '../app/hooks';
 import MenuAppBar from './MenuAppBar';
 import NavDrawer, { navDrawerWidth } from './NavDrawer';
 
-function Layout() {
+import { Component as ErrorPage } from '../error-page';
+
+export function Component() {
   useMenuCloseOnLocationChange();
 
   return (
@@ -28,4 +30,6 @@ function Layout() {
   );
 }
 
-export default Layout;
+export const ErrorBoundary = ErrorPage;
+
+export default Component;

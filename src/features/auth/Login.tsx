@@ -38,7 +38,7 @@ function LoginElement() {
   );
 }
 
-export default function Login() {
+export function Component() {
   return (
     <>
       <Typography variant="h5" gutterBottom>
@@ -48,3 +48,5 @@ export default function Login() {
     </>
   );
 }
+
+export default Component;

@@ -4,7 +4,7 @@ type ErrorPageProps = {
   message?: string;
 };
 
-export default function ErrorPage({ message }: ErrorPageProps) {
+export function Component({ message }: ErrorPageProps) {
   const error = useRouteError() as { statusText: string; message: string };
 
   return (
@@ -17,3 +17,5 @@ export default function ErrorPage({ message }: ErrorPageProps) {
     </div>
   );
 }
+
+export default Component;
