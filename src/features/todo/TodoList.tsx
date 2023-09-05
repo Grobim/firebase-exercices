@@ -160,6 +160,20 @@ export default function TodoList() {
     }
   }
 
+  function DisplayedTodos() {
+    if (displayedTodos?.length) {
+      return (
+        <Paper>
+          <List>
+            {displayedTodos.map((todo) => (
+              <TodoItem key={todo.id} todo={todo} />
+            ))}
+          </List>
+        </Paper>
+      );
+    }
+  }
+
   return (
     <Stack spacing={1}>
       <ToggleButtonGroup value={filter} exclusive onChange={handleFilterChange}>
@@ -167,13 +181,7 @@ export default function TodoList() {
         <ToggleButton value="active">Active</ToggleButton>
         <ToggleButton value="completed">Completed</ToggleButton>
       </ToggleButtonGroup>
-      <Paper>
-        <List>
-          {displayedTodos.map((todo) => (
-            <TodoItem key={todo.id} todo={todo} />
-          ))}
-        </List>
-      </Paper>
+      <DisplayedTodos />
     </Stack>
   );
 }
