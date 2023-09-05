@@ -155,7 +155,9 @@ export default function TodoList() {
     _: MouseEvent<HTMLElement, globalThis.MouseEvent>,
     value: 'all' | 'active' | 'completed',
   ) {
-    setFilter(value);
+    if (value) {
+      setFilter(value);
+    }
   }
 
   return (
