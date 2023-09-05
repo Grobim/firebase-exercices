@@ -9,6 +9,8 @@ import {
   ListItemText,
   Toolbar,
 } from '@mui/material';
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
+import ListIcon from '@mui/icons-material/List';
 import LoginIcon from '@mui/icons-material/Login';
 import PersonIcon from '@mui/icons-material/Person';
 import { useSelector } from 'react-redux';
@@ -45,12 +47,31 @@ export default function NavDrawer() {
           >
             <ListItemButton>
               <ListItemIcon>
-                <PersonIcon />
+                <LibraryBooksIcon />
               </ListItemIcon>
               <ListItemText primary="Book finder" />
             </ListItemButton>
           </NavLink>
         </ListItem>
+        {isLoggedIn && (
+          <ListItem>
+            <NavLink
+              to="/todos"
+              className={({ isActive }) =>
+                classNames(styles.link, {
+                  [styles.active]: isActive,
+                })
+              }
+            >
+              <ListItemButton>
+                <ListItemIcon>
+                  <ListIcon />
+                </ListItemIcon>
+                <ListItemText primary="Todos list" />
+              </ListItemButton>
+            </NavLink>
+          </ListItem>
+        )}
       </List>
       <Divider />
       <List>
