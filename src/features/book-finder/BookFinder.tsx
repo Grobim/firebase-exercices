@@ -3,7 +3,7 @@ import { Typography } from '@mui/material';
 import BookQuery from './BookQuery';
 import BookList from './BookList';
 
-export default function BookFinder() {
+export function Component() {
   return (
     <>
       <Typography variant="h5" gutterBottom>
@@ -14,3 +14,5 @@ export default function BookFinder() {
     </>
   );
 }
+
+export default Component;

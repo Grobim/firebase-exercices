@@ -3,23 +3,25 @@ import {
   createRoutesFromElements,
   Route,
 } from 'react-router-dom';
-import Layout from '../components/Layout';
-import App from '../Home';
-import ErrorPage from '../error-page';
-import Login from '../features/auth/Login';
-import Profile from '../features/auth/Profile';
-import BookFinder from '../features/book-finder/BookFinder';
-import TodoPage from '../features/todo/TodoPage';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route element={<Layout />} errorElement={<ErrorPage />}>
-      <Route path="/" element={<App />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/profile" element={<Profile />} />
-      <Route path="/book-finder" element={<BookFinder />} />
-      <Route path="/todos" element={<TodoPage />} />
-      <Route path="*" element={<ErrorPage message="Page not found" />} />
+    <Route lazy={() => import('../components/Layout')}>
+      <Route path="/" lazy={() => import('../Home')} />
+      <Route path="/login" lazy={() => import('../features/auth/Login')} />
+      <Route path="/profile" lazy={() => import('../features/auth/Profile')} />
+      <Route
+        path="/book-finder"
+        lazy={() => import('../features/book-finder/BookFinder')}
+      />
+      <Route path="/todos" lazy={() => import('../features/todo/TodoPage')} />
+      <Route
+        path="*"
+        lazy={async () => {
+          const { Component } = await import('../error-page');
+          return { Component: () => <Component message="Page not found" /> };
+        }}
+      />
     </Route>,
   ),
 );

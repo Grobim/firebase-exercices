@@ -1,9 +1,11 @@
 import { Typography } from '@mui/material';
 
-export default function Profile() {
+export function Component() {
   return (
     <Typography variant="h5" gutterBottom>
       Profile
     </Typography>
   );
 }
+
+export default Component;

@@ -6,7 +6,7 @@ import { Typography } from '@mui/material';
 import TodoList from './TodoList';
 import NewTodo from './NewTodo';
 
-export default function TodoPage() {
+export function Component() {
   const { status: authStatus, data: user } = useUser();
 
   if (authStatus === 'success' && !user) {
@@ -23,3 +23,5 @@ export default function TodoPage() {
     </>
   );
 }
+
+export default Component;

@@ -23,7 +23,7 @@ function BurritoTaste() {
   return <p>The burrito is {data.yummy ? 'good' : 'bad'}!</p>;
 }
 
-export default function Home() {
+export function Component() {
   return (
     <>
       <Counter />
@@ -34,3 +34,5 @@ export default function Home() {
     </>
   );
 }
+
+export default Component;
