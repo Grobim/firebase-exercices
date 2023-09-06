@@ -16,6 +16,10 @@ const router = createBrowserRouter(
       />
       <Route path="/todos" lazy={() => import('../features/todo/TodoPage')} />
       <Route
+        path="/github-user"
+        lazy={() => import('../features/github/GithubUserPage')}
+      />
+      <Route
         path="*"
         lazy={async () => {
           const { Component } = await import('../error-page');

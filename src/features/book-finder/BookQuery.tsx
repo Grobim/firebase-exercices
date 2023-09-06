@@ -27,9 +27,7 @@ export default function BookQuery() {
 
   function handleQuerySubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (input) {
-      dispatch(setQuery(input));
-    }
+    handleSearchClick();
   }
 
   function handleSearchClick() {
@@ -43,29 +41,27 @@ export default function BookQuery() {
   }
 
   return (
-    <>
-      <form onSubmit={handleQuerySubmit}>
-        <TextField
-          value={input}
-          label="Query"
-          onChange={handleQueryChange}
-          variant="standard"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <IconButton onClick={handleSearchClick} disabled={isFetching}>
-                  <SearchIcon />
-                </IconButton>
-              </InputAdornment>
-            ),
-            endAdornment: <img src="/google_watermark.gif" />,
-          }}
-          disabled={isFetching}
-          sx={{ mb: 2 }}
-          autoFocus
-        />
-        {isFetching && <CircularProgress sx={{ ml: 2 }} />}
-      </form>
-    </>
+    <form onSubmit={handleQuerySubmit}>
+      <TextField
+        value={input}
+        label="Query"
+        onChange={handleQueryChange}
+        variant="standard"
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <IconButton onClick={handleSearchClick} disabled={isFetching}>
+                <SearchIcon />
+              </IconButton>
+            </InputAdornment>
+          ),
+          endAdornment: <img src="/google_watermark.gif" />,
+        }}
+        disabled={isFetching}
+        sx={{ mb: 2 }}
+        autoFocus
+      />
+      {isFetching && <CircularProgress sx={{ ml: 2 }} />}
+    </form>
   );
 }
