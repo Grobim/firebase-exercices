@@ -1,5 +1,12 @@
+import { useState } from 'react';
+import { useSigninCheck } from 'reactfire';
+import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import classNames from 'classnames';
+
 import {
   Box,
+  Collapse,
   Divider,
   Drawer,
   List,
@@ -9,28 +16,32 @@ import {
   ListItemText,
   Toolbar,
 } from '@mui/material';
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import ExpandMore from '@mui/icons-material/ExpandMore';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import ListIcon from '@mui/icons-material/List';
 import LoginIcon from '@mui/icons-material/Login';
 import PersonIcon from '@mui/icons-material/Person';
-import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-import classNames from 'classnames';
 
 import { closeMenu, selectMenuOpened } from '../app/uiSlice';
 import { useAppDispatch } from '../app/hooks';
 
 import styles from './NavDrawer.module.css';
-import { useSigninCheck } from 'reactfire';
 
 export const navDrawerWidth = 240;
 
 export default function NavDrawer() {
   const dispatch = useAppDispatch();
   const menuOpened = useSelector(selectMenuOpened);
+  const [githubOpen, setGithubOpen] = useState(false);
 
   const { status, data } = useSigninCheck();
   const isLoggedIn = status === 'success' && data.signedIn;
+
+  function handleGithubMenuClick() {
+    setGithubOpen(!githubOpen);
+  }
 
   const drawer = (
     <>
@@ -72,6 +83,34 @@ export default function NavDrawer() {
             </NavLink>
           </ListItem>
         )}
+        <ListItem>
+          <ListItemButton onClick={handleGithubMenuClick}>
+            <ListItemIcon>
+              <GitHubIcon />
+            </ListItemIcon>
+            <ListItemText primary="Github" />
+            {githubOpen ? <ExpandLess /> : <ExpandMore />}
+          </ListItemButton>
+        </ListItem>
+        <Collapse in={githubOpen} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding sx={{ pl: 4 }}>
+            <NavLink
+              to="/github-user"
+              className={({ isActive }) =>
+                classNames(styles.link, {
+                  [styles.active]: isActive,
+                })
+              }
+            >
+              <ListItemButton>
+                <ListItemIcon>
+                  <PersonIcon />
+                </ListItemIcon>
+                <ListItemText primary="User" />
+              </ListItemButton>
+            </NavLink>
+          </List>
+        </Collapse>
       </List>
       <Divider />
       <List>
