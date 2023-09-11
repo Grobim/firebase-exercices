@@ -1,3 +1,7 @@
+# Origin
+
+This app is some implementations from [App-ideas](https://github.com/Grobim/app-ideas)
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
