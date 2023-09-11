@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { Button } from '@mui/material';
 
-import { useAppDispatch } from '../../app/hooks';
+import { useAppDispatch } from '~/app/hooks';
 import { increment, selectCount } from './counterSlice';
 
 export default function Counter() {

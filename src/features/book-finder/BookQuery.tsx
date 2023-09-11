@@ -11,7 +11,7 @@ import SearchIcon from '@mui/icons-material/Search';
 
 import { useGetBooksQuery } from './book-api';
 import { selectQuery, selectStartIndex, setQuery } from './bookSlice';
-import { useAppDispatch } from '../../app/hooks';
+import { useAppDispatch } from '~/app/hooks';
 
 export default function BookQuery() {
   const dispatch = useAppDispatch();

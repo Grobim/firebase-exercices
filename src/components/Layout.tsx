@@ -1,12 +1,12 @@
 import { Box, Toolbar } from '@mui/material';
 import { Outlet } from 'react-router-dom';
 
-import { useMenuCloseOnLocationChange } from '../app/hooks';
+import { useMenuCloseOnLocationChange } from '~/app/hooks';
 
 import MenuAppBar from './MenuAppBar';
 import NavDrawer, { navDrawerWidth } from './NavDrawer';
 
-import { Component as ErrorPage } from '../error-page';
+import { Component as ErrorPage } from '~/error-page';
 
 export function Component() {
   useMenuCloseOnLocationChange();
