@@ -25,8 +25,8 @@ import ListIcon from '@mui/icons-material/List';
 import LoginIcon from '@mui/icons-material/Login';
 import PersonIcon from '@mui/icons-material/Person';
 
-import { closeMenu, selectMenuOpened } from '../app/uiSlice';
-import { useAppDispatch } from '../app/hooks';
+import { closeMenu, selectMenuOpened } from '~/app/uiSlice';
+import { useAppDispatch } from '~/app/hooks';
 
 import styles from './NavDrawer.module.css';
 

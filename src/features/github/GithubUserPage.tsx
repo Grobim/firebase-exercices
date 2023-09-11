@@ -14,7 +14,7 @@ import {
 import SearchIcon from '@mui/icons-material/Search';
 import { useSelector } from 'react-redux';
 import { selectUserQuery, setUserQuery } from './githubSlice';
-import { useAppDispatch } from '../../app/hooks';
+import { useAppDispatch } from '~/app/hooks';
 import { useGetUserQuery, useGetUserReposQuery } from './githubApi';
 
 export function Component() {

@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import counterReducer, { counterSlice } from '../features/counter/counterSlice';
-import { bookApi } from '../features/book-finder/book-api';
-import bookReducer, { bookSlice } from '../features/book-finder/bookSlice';
-import githubReducer, { githubSlice } from '../features/github/githubSlice';
-import { githubApi } from '../features/github/githubApi';
+import counterReducer, { counterSlice } from '~/features/counter/counterSlice';
+import { bookApi } from '~/features/book-finder/book-api';
+import bookReducer, { bookSlice } from '~/features/book-finder/bookSlice';
+import githubReducer, { githubSlice } from '~/features/github/githubSlice';
+import { githubApi } from '~/features/github/githubApi';
 import uiReducer, { uiSlice } from './uiSlice';
 
 const store = configureStore({

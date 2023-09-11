@@ -14,9 +14,9 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
-import { openMenu } from '../app/uiSlice';
-import { useAppDispatch } from '../app/hooks';
-import { logout } from '../features/auth/auth';
+import { openMenu } from '~/app/uiSlice';
+import { useAppDispatch } from '~/app/hooks';
+import { logout } from '~/features/auth/auth';
 
 function UserAvatar() {
   const { status, data: user } = useUser();

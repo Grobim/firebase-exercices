@@ -15,7 +15,7 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 import { selectQuery, selectStartIndex, setStartIndex } from './bookSlice';
 import { Book, useGetBooksQuery } from './book-api';
-import { useAppDispatch } from '../../app/hooks';
+import { useAppDispatch } from '~/app/hooks';
 
 export default function BookList() {
   const dispatch = useAppDispatch();
