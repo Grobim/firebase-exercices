@@ -18,6 +18,7 @@ import {
 } from '@mui/material';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
+import EnhancedEncryptionIcon from '@mui/icons-material/EnhancedEncryption';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import ListIcon from '@mui/icons-material/List';
@@ -64,7 +65,7 @@ export default function NavDrawer() {
             </ListItemButton>
           </NavLink>
         </ListItem>
-        {isLoggedIn && (
+        {isLoggedIn ? (
           <ListItem>
             <NavLink
               to="/todos"
@@ -82,7 +83,7 @@ export default function NavDrawer() {
               </ListItemButton>
             </NavLink>
           </ListItem>
-        )}
+        ) : null}
         <ListItem>
           <ListItemButton onClick={handleGithubMenuClick}>
             <ListItemIcon>
@@ -111,6 +112,23 @@ export default function NavDrawer() {
             </NavLink>
           </List>
         </Collapse>
+        <ListItem>
+          <NavLink
+            to="/vigenere-cipher"
+            className={({ isActive }) =>
+              classNames(styles.link, {
+                [styles.active]: isActive,
+              })
+            }
+          >
+            <ListItemButton>
+              <ListItemIcon>
+                <EnhancedEncryptionIcon />
+              </ListItemIcon>
+              <ListItemText primary="Vigenere cipher" />
+            </ListItemButton>
+          </NavLink>
+        </ListItem>
       </List>
       <Divider />
       <List>
