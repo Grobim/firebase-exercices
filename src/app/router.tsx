@@ -20,6 +20,10 @@ const router = createBrowserRouter(
         lazy={() => import('../features/github/GithubUserPage')}
       />
       <Route
+        path="/vigenere-cipher"
+        lazy={() => import('../features/vigenere/VigenereCipherPage')}
+      />
+      <Route
         path="*"
         lazy={async () => {
           const { Component } = await import('../error-page');
