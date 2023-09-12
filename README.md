@@ -1,6 +1,6 @@
 # Origin
 
-This app is some implementations from [App-ideas](https://github.com/Grobim/app-ideas)
+This app is some implementations from [App-ideas](https://github.com/Grobim/app-ideas) and is available [here](https://fir-exercices.web.app/)
 
 # React + TypeScript + Vite
 
