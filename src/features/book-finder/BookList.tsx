@@ -59,50 +59,54 @@ export default function BookList() {
     <>
       <IconButton
         onClick={handlePageChange(page - 1)}
-        disabled={page === 0 || isFetching}
+        disabled={page === 0 || isFetching || !books}
       >
         <NavigateBeforeIcon />
       </IconButton>
-      <IconButton onClick={handlePageChange(page + 1)} disabled={isFetching}>
+      <IconButton
+        onClick={handlePageChange(page + 1)}
+        disabled={isFetching || !books}
+      >
         <NavigateNextIcon />
       </IconButton>
       <Grid container spacing={2}>
-        {books.map((book) => (
-          <Grid xs={12} md={6} key={book.id}>
-            <Card>
-              <CardActionArea
-                disabled={isFetching}
-                onClick={handleBookClick(book)}
-              >
-                <CardMedia
-                  image={
-                    book.volumeInfo.imageLinks?.smallThumbnail ||
-                    'https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Placeholder_book.svg/200px-Placeholder_book.svg.png'
-                  }
-                  sx={{ height: '120px', backgroundSize: 'contain' }}
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h6" component="div">
-                    {book.volumeInfo.title}
-                  </Typography>
-                  <Typography>
-                    <b>Authors: </b>
-                    {book.volumeInfo.authors &&
-                      book.volumeInfo.authors.join(', ')}
-                  </Typography>
-                  <Typography>
-                    <b>Published: </b>
-                    {book.volumeInfo.publishedDate}
-                  </Typography>
-                  <Typography>
-                    <b>Publisher: </b>
-                    {book.volumeInfo.publisher}
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          </Grid>
-        ))}
+        {!!books &&
+          books.map((book) => (
+            <Grid xs={12} md={6} key={book.id}>
+              <Card>
+                <CardActionArea
+                  disabled={isFetching}
+                  onClick={handleBookClick(book)}
+                >
+                  <CardMedia
+                    image={
+                      book.volumeInfo.imageLinks?.smallThumbnail ||
+                      'https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Placeholder_book.svg/200px-Placeholder_book.svg.png'
+                    }
+                    sx={{ height: '120px', backgroundSize: 'contain' }}
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h6" component="div">
+                      {book.volumeInfo.title}
+                    </Typography>
+                    <Typography>
+                      <b>Authors: </b>
+                      {book.volumeInfo.authors &&
+                        book.volumeInfo.authors.join(', ')}
+                    </Typography>
+                    <Typography>
+                      <b>Published: </b>
+                      {book.volumeInfo.publishedDate}
+                    </Typography>
+                    <Typography>
+                      <b>Publisher: </b>
+                      {book.volumeInfo.publisher}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            </Grid>
+          ))}
       </Grid>
     </>
   );

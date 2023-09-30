@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import {
@@ -12,9 +12,12 @@ import SearchIcon from '@mui/icons-material/Search';
 import { useGetBooksQuery } from './book-api';
 import { selectQuery, selectStartIndex, setQuery } from './bookSlice';
 import { useAppDispatch } from '~/app/hooks';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 export default function BookQuery() {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
   const query = useSelector(selectQuery);
   const startIndex = useSelector(selectStartIndex);
@@ -22,6 +25,13 @@ export default function BookQuery() {
     { query, startIndex },
     { skip: !query },
   );
+
+  useEffect(() => {
+    const queryUrl = searchParams.get('q') || '';
+
+    dispatch(setQuery(queryUrl));
+    setInput(queryUrl);
+  }, [dispatch]);
 
   const [input, setInput] = useState<string>(query);
 
@@ -37,7 +47,10 @@ export default function BookQuery() {
   }
 
   function handleQueryChange(event: ChangeEvent<HTMLInputElement>) {
-    setInput(event.target.value);
+    const inputValue = event.target.value;
+    setInput(inputValue);
+    const inputQuery = inputValue ? `?q=${inputValue}` : '';
+    navigate(`.${inputQuery}`, { replace: true });
   }
 
   return (
